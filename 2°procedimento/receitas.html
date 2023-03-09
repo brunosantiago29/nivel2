@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Missão 2 </title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+  <link href="css\bootstrap.min.css" rel="stylesheet">
+  <style>
+      img {
+        width: 300px;
+        height: 200px; 
+      }  
+    body {
+        max-width:1200px;   
+    }
+  </style>
+</head>
+<body background="red">
+</head>
+<body class="bg-warning container-fluid">
+  <h1 class="text-center">Catálogo de Receitas</h1>
+  <div id="pnlCatalogo" class="d-flex flex-wrap"></div> 
+  <script>
+    var receitas = [
+            {
+                "titulo": "Bolo De Chocolcate",
+                "imagem": "bolo.jpg",
+                "preparo": "Instruções de preparo da receita",
+                "ingredientes": ['1kg de Chocolate em pó ',
+                '1 litro de leite',
+                '3 ovos',
+                '3 Colheres de Manteiga ',
+                '1 1/2 Xicara de trigo ',
+                '1 Xicara de Açucar ']
+            },
+            {
+                "titulo": "Risoto de Camarão",
+                "imagem": "risoto.jpeg",
+                "preparo": "Instruções de preparo da receita ",
+                "ingredientes": ['1Kg de Camarão',
+                'arroz Arbóreo ',
+                'Cebola picadinha',
+                '1 colher de azeite de oliva',
+                'Dentes de alho picado']
+            },
+            {
+              "titulo": "Cuzcuz Pulista",
+              "imagem": "cuzcuz.jpeg",
+              "preparo": "Instruções de preparo da receita ",
+              "ingredientes": ['farinha de milho',
+              'milho em conserva',
+              'Sal a gosto',
+              'azeitonas',
+              'sardinha em lata']
+          }
+          
+        ];
+        function getListaIngredientes(receita) {
+            let lista = "<ul>";
+            for (let i = 0; i < receita.ingredientes.length; i++) {
+                lista += "<li>" + receita.ingredientes[i] + "</li>";
+            }
+            lista += "</ul>";
+            return lista;
+        }
+        function getCard(receita) {
+            let card = "<div class='card'>";
+            card += "<img src='" + receita.imagem + "' class='card-img-top'>";
+            card += "<div class='card-body'>";
+            card += "<h5 class='card-title'>" + receita.titulo + "</h5>";
+            card += "<p class='card-text'>" + receita.preparo + "</p>";
+            card += getListaIngredientes(receita);
+            card += "</div>";
+            card += "</div>";
+            return card;
+        }
+        function preencheCatalogo() {
+            for (let i = 0; i < receitas.length; i++) {
+                document.getElementById("pnlCatalogo").innerHTML += getCard(receitas[i]);
+            }
+        }
+        window.onload = preencheCatalogo;
+    </script>
+</body>
+</html>
